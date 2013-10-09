@@ -11,7 +11,7 @@ define docker::run(
   $env = [],
   $dns = [],
   $respawn = true,
-  $daemonize = true,
+  $should_daemonize = true,
 ) {
 
   validate_re($image, '^[\S]*$')

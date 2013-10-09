@@ -4,7 +4,7 @@ author "Gareth Rushgrove"
 start on runlevel [2345]
 stop on runlevel [!2345]
 
-<% if daemonize %>
+<% if should_daemonize %>
 expect daemon
 <% end %>
 
