@@ -6,11 +6,12 @@ define docker::run(
   $volumes = [],
   $running = true,
   $volumes_from = false,
-  $username = '',
-  $hostname = '',
+  $username = undef,
+  $hostname = undef,
   $env = [],
   $dns = [],
   $respawn = true,
+  $daemonize = true,
 ) {
 
   validate_re($image, '^[\S]*$')
