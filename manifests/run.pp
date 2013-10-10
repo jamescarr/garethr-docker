@@ -13,7 +13,7 @@ define docker::run(
   $dns = [],
   $respawn = true,
   $should_daemonize = true,
-  $start_on_runlevel = '[2345]'
+  $start_on_runlevel = '[2345]',
   $prestop = false,
 ) {
 
