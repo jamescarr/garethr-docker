@@ -1,3 +1,4 @@
+# TODO add stop on runlevel back
 define docker::run(
   $image,
   $command = false,
@@ -12,6 +13,7 @@ define docker::run(
   $dns = [],
   $respawn = true,
   $should_daemonize = true,
+  $start_on_runlevel = '[2345]'
 ) {
 
   validate_re($image, '^[\S]*$')
