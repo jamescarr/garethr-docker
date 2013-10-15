@@ -1,7 +1,12 @@
 description "start and stop <%= title %> in docker"
 author "Gareth Rushgrove"
 
-start on runlevel <%= start_on_runlevel %>
+<% if start_on_docker_stop %>
+  start on stopping docker
+<% else %>
+  start on runlevel <%= start_on_runlevel %>
+  stop on stopping docker
+<% end %>
 
 <% if should_daemonize %>
 expect daemon
