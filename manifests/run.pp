@@ -15,7 +15,8 @@ define docker::run(
   $should_daemonize = true,
   $start_on_runlevel = '[2345]',
   $prestop = false,
-  $start_on_stopping_docker = false,
+  $start_on_docker_stop = false,
+  $user = 'root',
 ) {
 
   validate_re($image, '^[\S]*$')

@@ -5,14 +5,13 @@ author "Gareth Rushgrove"
   start on stopping docker
 <% else %>
   start on runlevel <%= start_on_runlevel %>
-  stop on stopping docker
 <% end %>
 
 <% if should_daemonize %>
 expect daemon
 <% end %>
 
-setuid root
+setuid <%= user %>
 
 <% if respawn %>
 respawn
