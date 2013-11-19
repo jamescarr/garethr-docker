@@ -11,7 +11,6 @@
 #
 class docker::install {
   include apt
-  validate_string($docker::version)
   validate_re($::osfamily, '^Debian$', 'This module uses the docker apt repo and only works on Debian systems that support it.')
   validate_string($::kernelrelease)
 
@@ -34,8 +33,14 @@ class docker::install {
     ensure => present,
   }
 
-  package { 'lxc-docker':
-    ensure  => $docker::version,
+  if $docker::version {
+    $dockerpackage = "lxc-docker-${docker::version}"
+  } else {
+    $dockerpackage = "lxc-docker"
+  }
+
+  package { $dockerpackage:
+    ensure  => present,
     require => [
         Apt::Source['docker'],
         Package[$kernelpackage],
