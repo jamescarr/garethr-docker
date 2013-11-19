@@ -27,8 +27,6 @@ class docker(
   $socket_bind    = $docker::params::socket_bind,
   $network_bridge = $docker::params::network_bridge,
 ) inherits docker::params {
-
-  validate_string($version)
   validate_re($::osfamily, '^Debian$', 'This module uses the docker apt repo and only works on Debian systems that support it.')
 
   class { 'docker::install': } ->
